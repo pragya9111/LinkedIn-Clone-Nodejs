@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LinkedIn</title>
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
+    <link rel="stylesheet" href="../stylesheets/style.css">
+</head>
+
+<body>
+
+    <div class="container">
+        <div class="nav">
+            <div class="left">
+                <img src="../images/logo.png" alt="">
+                <input type="search" placeholder="Search">
+            </div>
+            <div class="rigth">
+                <div class="one">
+                    <i class="ri-home-7-fill"></i>
+                    <h5>Home</h5>
+                </div>
+                <div class="one">
+                    <i class="ri-user-follow-fill"></i>
+                    <h5>My Network</h5>
+                </div>
+                <div class="one">
+                    <i class="ri-briefcase-fill"></i>
+                    <h5>Jobs</h5>
+                </div>
+                <div class="one">
+                    <i class="ri-notification-3-fill"></i>
+                    <h5>Notification</h5>
+                </div>
+            </div>
+        </div>
+
+        <div class="lftsidebox">
+            <div class="profilepic">
+                <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1888&q=80"                    alt="" style="width: 100%;">
+            </div>
+            <div class="about">
+                <h4><%=foundUser.name%></h4>
+                <p>MERN Stack Developer</p>
+            </div>
+            <div class="views">
+                <div class="one">
+                    <p>Who viewed your profile</p>
+                    <p style="color: cornflowerblue;font-weight: 700;">270</p>
+                </div>
+                <div class="two">
+                    <p>Impression of your post</p>
+                    <p style="color: cornflowerblue;font-weight: 700;">63</p>
+                </div>
+            </div>
+            <button id="btn">View Profile</button>
+        </div>
+
+        
+        <div class="rgtsidebox">
+            <h5><i class="ri-arrow-right-s-fill"></i> Edit your Profile</h5>
+            <h5><i class="ri-arrow-right-s-fill"></i> About</h5>
+            <h5><i class="ri-arrow-right-s-fill"></i> Setting</h5>
+            <h5><i class="ri-arrow-right-s-fill"></i> Privacy & Terms</h5>
+            <h5><i class="ri-arrow-right-s-fill"></i> Help Center</h5>
+            <h5><i class="ri-arrow-right-s-fill"></i> Log Out</h5>
+
+        </div>
+
+        <div class="center">
+            <div class="topbox">
+                <input type="text" placeholder="Start a post">
+                <div class="icn">
+                    <i class="ri-image-fill" style="display: flex;align-items: center;font-family: Montserrat;color: rgb(18, 189, 18);">Photo</i>
+                    <i class="ri-movie-fill" style="display: flex;align-items: center;color: rgb(62, 184, 208);">Video</i>
+                    <i class="ri-calendar-2-line" style="display: flex;align-items: center;color: orange;">Event</i>
+                    <i class="ri-article-fill" style="display: flex;align-items: center;color: rgb(239, 138, 172);">Write article</i>
+                </div>
+            </div>
+            <div id="cards">
+                <%foundPost.forEach(function(elem){ %>
+                    <div class="card">
+                        <div class="top">
+                            <div class="pic">
+                                <img src="https://images.unsplash.com/photo-1611601679655-7c8bc197f0c6?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1964&q=80" alt="">
+                            </div>
+                            <div class="creator">
+                                <h5><%=elem.username.username%></h5>
+                                <p>ijbkjn</p>
+                            </div>
+                        </div>
+                        <div class="mid1">
+                            <p><%=elem.caption%>></p>
+                        </div>
+                        <div class="mid2">
+                            <img src='./images/uploads/<%=elem.image%>' alt="">
+                        </div>
+                        <div class="btm">
+                            <a href="#" style="display: flex;text-decoration: none;align-items: center;color:#60627C;"><i class="ri-thumb-up-line"></i>Like <p></p> </a>
+                            <a href="#" style="display: flex;text-decoration: none;align-items: center;color:#60627C;"><i class="ri-chat-3-line"></i> Comment<p></p> </a>
+    
+                        </div>
+                    </div>
+               <% })%>
+            </div>
+        </div>
+
+        <div class="overlay">
+            <div class="createbox">
+                <div class="head"><h4>Create Post</h4><i class="ri-close-circle-line"></i></div>
+                <form action="/createpost" method="post" enctype="multipart/form-data">
+                    <input type="text" name="caption" id="cp" placeholder="Write caption...">
+                    <input type="file" name="image"><br><br>
+                    <input type="submit" value="Post" style="padding:.6vmin 1.2vmin;background-color: #EAB026;border: none;">
+                </form>
+            </div>
+        </div>
+
+    </div>
+
+</body>
+<script>
+    document.querySelector(".topbox input").addEventListener('click',function(){
+        document.querySelector('.overlay').style.display = "flex"
+    })
+    document.querySelector('.head i').addEventListener("click", function(){
+        document.querySelector('.overlay').style.display = "none"
+        
+    })
+</script>
+
+</html>

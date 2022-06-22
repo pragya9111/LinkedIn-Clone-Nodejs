@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LinkedIn</title>
+    <style>
+        body {
+            width: 100vw;
+            height: 100vh;
+            background-color: rgb(210, 210, 252);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            font-family: montserrat;
+            color: #3a3a3a;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="main2">
+        <div class="box">
+            <h3>Set your new password : - </h3>
+            <form action="/resetpswrd/<%=user._id%>" method="post">
+                <div class="inp">
+                    <label for="one">New Password :- </label>
+                    <input type="text" name="password" id="one"><br><br>
+                </div>
+                <div class="inp">
+                    <label for="two">Confirm Password :- </label>
+                    <input type="text" name="confirmpswrd" id="two"><br><br>
+                </div>
+
+                <input type="submit" class="sub">
+            </form>
+        </div>
+    </div>
+
+
+</body>
+
+</html>
